@@ -16,7 +16,7 @@ class WeatherList extends Component {
         let humidityArray = [];
 
         cityData.list.forEach(obj => {
-            tempArray.push(obj.main.temp);
+            tempArray.push(obj.main.temp - 273.15);
             pressureArray.push(obj.main.pressure);
             humidityArray.push(obj.main.humidity);
         });
@@ -25,13 +25,13 @@ class WeatherList extends Component {
             <tr key={`tr-city-${cityName}`}>
                 <td>{cityName}</td>
                 <td style={vaStyle}>
-                    <Chart data={tempArray} color="orange" />
+                    <Chart data={tempArray} color="orange" units="°C"/>
                 </td>
                 <td style={vaStyle}>
-                    <Chart data={pressureArray} color="green" />
+                    <Chart data={pressureArray} color="green" units="hPA"/>
                 </td>
                 <td style={vaStyle}>
-                    <Chart data={humidityArray} color="blue" />
+                    <Chart data={humidityArray} color="blue" units="%"/>
                 </td>
             </tr>
         );
@@ -50,9 +50,9 @@ class WeatherList extends Component {
                 <thead>
                     <tr>
                         <th>City</th>
-                        <th>Temperature</th>
-                        <th>Pressure</th>
-                        <th>Humidity</th>
+                        <th>Temperature (°C)</th>
+                        <th>Pressure (hPa)</th>
+                        <th>Humidity (%)</th>
                     </tr>
                 </thead>
                 <tbody>
