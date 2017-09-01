@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Chart from '../components/chart';
+import GoogleMap from '../components/google_map';
 
-const vaStyle = {'verticalAlign': 'bottom'};
 class WeatherList extends Component {
 
     renderWeather (cityData) {
@@ -11,6 +11,7 @@ class WeatherList extends Component {
         }
 
         const cityName = cityData.city.name;
+        const {lat, lon} = cityData.city.coord;
         let tempArray = [];
         let pressureArray = [];
         let humidityArray = [];
@@ -23,16 +24,10 @@ class WeatherList extends Component {
 
         return (
             <tr key={`tr-city-${cityName}`}>
-                <td>{cityName}</td>
-                <td style={vaStyle}>
-                    <Chart data={tempArray} color="orange" units="°C"/>
-                </td>
-                <td style={vaStyle}>
-                    <Chart data={pressureArray} color="green" units="hPA"/>
-                </td>
-                <td style={vaStyle}>
-                    <Chart data={humidityArray} color="blue" units="%"/>
-                </td>
+                <td><GoogleMap lat={lat} lon={lon} /></td>
+                <td><Chart data={tempArray} color="orange" units="°C"/></td>
+                <td><Chart data={pressureArray} color="green" units="hPA"/></td>
+                <td><Chart data={humidityArray} color="blue" units="%"/></td>
             </tr>
         );
     }
