@@ -19,7 +19,7 @@
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
     "jquery": "^3.5.0",
-    "jsdom": "^16.5.0",
+    "jsdom": "^16.7.0",
     "mocha": "^10.1.0",
     "react-addons-test-utils": "^0.14.7",
     "webpack": "^5.75.0",
